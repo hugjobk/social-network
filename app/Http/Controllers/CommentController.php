@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\BigComment;
-use Illuminate\Support\Facades\Auth;
+use App\Comment;
 use App\Http\Requests;
 
-class BigCommentController extends Controller
+class CommentController extends Controller
 {
-    public function postBigCommentPost(Request $request)
+    public function postCommentPost(Request $request)
     {
         $post_id = $request['postId'];
         $this->validate($request, [
             'body' => 'required|max:1000'
         ]);
-        $comment = new BigComment();
+        $comment = new Comment();
         $comment->body = $request['body'];
         $comment->post_id = $post_id;
         $message = 'There was an error';

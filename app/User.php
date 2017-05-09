@@ -21,6 +21,10 @@ class User extends Model implements Authenticatable
 
     public function comments()
     {
-        return $this->hasMany('App\BigComment');
+        return $this->hasMany('App\Comment');
+    }
+    public function subComments()
+    {
+        return $this->hasMany('App\SubComment');
     }
 }

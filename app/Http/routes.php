@@ -86,7 +86,17 @@ Route::post('/like', [
     'as' => 'like'
 ]);
 
-Route::post('/big-comment', [
-    'uses' => 'BigCommentController@postBigCommentPost',
-    'as' => 'big-comment'
+Route::post('/comment', [
+    'uses' => 'CommentController@postCommentPost',
+    'as' => 'comment'
+]);
+
+Route::get('/user/{user_id}', [
+    'uses' => 'UserController@getUser',
+    'as' => 'user'
+]);
+
+Route::post('/sub-comment', [
+    'uses' => 'SubCommentController@postSubCommentPost',
+    'as' => 'sub-comment'
 ]);

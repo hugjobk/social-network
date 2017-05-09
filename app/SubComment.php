@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BigComment extends Model
+class SubComment extends Model
 {
     public function user()
     {
@@ -13,6 +13,6 @@ class BigComment extends Model
 
     public function post()
     {
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo('App\Comment');
     }
 }

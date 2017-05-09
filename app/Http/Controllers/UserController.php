@@ -55,7 +55,12 @@ class UserController extends Controller
 
     public function getAccount()
     {
-        return view('account', ['user' => Auth::user()]);
+        return view('account', ['user' => Auth::user(), 'current_user' => Auth::user()]);
+    }
+
+    public function getUser($userId)
+    {
+        return view('account', ['user' => User::whereId($userId)->get()[0], 'current_user' => Auth::user()]);
     }
 
     public function postSaveAccount(Request $request)

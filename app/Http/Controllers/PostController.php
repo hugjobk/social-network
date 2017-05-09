@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Like;
 use App\Post;
-use App\BigComment;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -14,8 +14,8 @@ class PostController extends Controller
     public function getDashboard()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
-        $big_comments = BigComment::orderBy('created_at', 'desc')->get();
-        return view('dashboard', ['posts' => $posts, 'big_comments' => $big_comments]);
+        $comments = Comment::orderBy('created_at', 'desc')->get();
+        return view('dashboard', ['posts' => $posts, 'comments' => $comments]);
     }
 
     public function postCreatePost(Request $request)

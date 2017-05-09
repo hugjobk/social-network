@@ -38,16 +38,19 @@
                         @endif
                     </div>
                     <ul>
-                        @foreach($big_comments as $big_comment)
-                            @if(strcmp($big_comment->post_id, $post->id) == 0)
-                                <li>{{ $big_comment->body }}</li>
+                        @foreach($comments as $comment)
+                            @if(strcmp($comment->post_id, $post->id) == 0)
+                                <li>{{ $comment->body }}</li>
                                 <div class="info">
-                                    Posted by {{ $big_comment->user->first_name }} on {{ $big_comment->created_at }}
+                                    Posted by <a href="{{ route('user', ['user_id' => $comment->user_id]) }}" class="edit">{{ $comment->user->first_name }}</a> on {{ $comment->created_at }}
+                                </div>
+                                <div class="interaction">
+                                    <a href="{{ route('comment') }}" class="reply">Reply</a>
                                 </div>
                             @endif
                         @endforeach
                     </ul>
-                    <form action="{{ route('big-comment') }}" method="post">
+                    <form action="{{ route('comment') }}" method="post">
                         <div class="form-group">
                             <textarea class="form-control" name="body" id="new-post" rows="2"
                                       placeholder="Your Comment"></textarea>
@@ -89,6 +92,6 @@
         var token = '{{ Session::token() }}';
         var urlEdit = '{{ route('edit') }}';
         var urlLike = '{{ route('like') }}';
-        var urlBigComment = '{{ route('big-comment') }}';
+        var urlComment = '{{ route('comment') }}';
     </script>
 @endsection
