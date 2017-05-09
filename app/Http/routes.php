@@ -86,3 +86,7 @@ Route::post('/like', [
     'as' => 'like'
 ]);
 
+Route::post('/big-comment', [
+    'uses' => 'BigCommentController@postBigCommentPost',
+    'as' => 'big-comment'
+]);
